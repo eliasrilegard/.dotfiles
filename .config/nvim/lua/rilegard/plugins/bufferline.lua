@@ -1,7 +1,10 @@
 return {
   "akinsho/bufferline.nvim",
   event = "BufReadPost",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
+    "zaldih/themery.nvim", -- Ensure selected theme is loaded
+  },
   version = "*",
   config = function()
     local bufferline = require("bufferline")
