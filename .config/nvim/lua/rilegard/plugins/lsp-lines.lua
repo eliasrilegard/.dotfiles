@@ -5,13 +5,23 @@ return {
     local lsp_lines = require("lsp_lines")
     lsp_lines.setup()
 
-    -- Optional toggle for lsp_lines
-    vim.keymap.set("n", "<leader>l", lsp_lines.toggle, { desc = "Toggle LSP lines" })
+    vim.keymap.set(
+      "n",
+      "<leader>l",
+      function()
+        if vim.diagnostic.config().virtual_lines then
+          vim.diagnostic.config({ virtual_lines = false })
+        else
+          vim.diagnostic.config({
+            virtual_lines = { highlight_whole_line = false },
+          })
+        end
+      end,
+      { desc = "Toggle LSP lines" }
+    )
 
     vim.diagnostic.config({
-      -- Disable virtual_text since it's redundant
-      virtual_lines = true,
-      virtual_text = false,
+      virtual_lines = { highlight_whole_line = false },
     })
   end,
 }
