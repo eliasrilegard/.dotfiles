@@ -45,6 +45,7 @@ return {
         overrides = function()
           return {
             Boolean = { bold = false },
+            ["@variable.builtin"] = { italic = false },
           }
         end,
       },
