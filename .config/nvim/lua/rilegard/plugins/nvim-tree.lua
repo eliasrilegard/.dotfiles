@@ -5,11 +5,11 @@ return {
     "nvim-tree/nvim-web-devicons",
   },
   keys = {
-    { "<C-n>", "<CMD>NvimTreeToggle<CR>", desc = "Toggle File Explorer" },
-    { "<leader>nn", "<CMD>NvimTreeToggle<CR>", desc = "Toggle File Explorer" },
-    { "<leader>nf", "<CMD>NvimTreeFindFileToggle<CR>", desc = "Toggle File Explorer on Current File" },
-    { "<leader>nc", "<CMD>NvimTreeCollapse<CR>", desc = "Collapse All Folders" },
-    { "<leader>nr", "<CMD>NvimTreeRefresh<CR>", desc = "Refresh File Explorer" },
+    { "<C-n>", "<cmd>NvimTreeToggle<cr>", desc = "Toggle file explorer" },
+    { "<leader>nn", "<cmd>NvimTreeToggle<cr>", desc = "Toggle file explorer" },
+    { "<leader>nf", "<cmd>NvimTreeFindFileToggle<cr>", desc = "Toggle file explorer on current file" },
+    { "<leader>nc", "<cmd>NvimTreeCollapse<cr>", desc = "Collapse all folders" },
+    { "<leader>nr", "<cmd>NvimTreeRefresh<cr>", desc = "Refresh file explorer" },
   },
   config = function()
     vim.g.loaded_netrw = 1

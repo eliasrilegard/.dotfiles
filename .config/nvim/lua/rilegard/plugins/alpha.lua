@@ -21,13 +21,13 @@ return {
     }
 
     dashboard.section.buttons.val = {
-      dashboard.button("n", "  > Browse files", "<CMD>NvimTreeToggle<CR>"),
-      dashboard.button("f", "󰱼  > Find file", "<CMD>Telescope find_files<CR>"),
-      dashboard.button("r", "  > Recent files", "<CMD>Telescope oldfiles<CR>"),
-      dashboard.button("s", "󱎸  > Find string", "<CMD>Telescope live_grep<CR>"),
-      dashboard.button("l", "󰒲  > Lazy", "<CMD>Lazy<CR>"),
-      dashboard.button("m", "󱌣  > Mason", "<CMD>Mason<CR>"),
-      dashboard.button("q", "  > Quit", "<CMD>qa<CR>"),
+      dashboard.button("n", "  > Browse files", "<cmd>NvimTreeToggle<cr>"),
+      dashboard.button("f", "󰱼  > Find file", "<cmd>Telescope find_files<cr>"),
+      dashboard.button("r", "  > Recent files", "<cmd>Telescope oldfiles<cr>"),
+      dashboard.button("s", "󱎸  > Find string", "<cmd>Telescope live_grep<cr>"),
+      dashboard.button("l", "󰒲  > Lazy", "<cmd>Lazy<cr>"),
+      dashboard.button("m", "󱌣  > Mason", "<cmd>Mason<cr>"),
+      dashboard.button("q", "  > Quit", "<cmd>qa<cr>"),
     }
 
     dashboard.section.footer.val = ""

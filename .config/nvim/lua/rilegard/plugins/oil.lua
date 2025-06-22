@@ -7,7 +7,7 @@ return {
       function()
         require("oil").toggle_float()
       end,
-      desc = "Open Directory",
+      desc = "Open directory",
     },
   },
   opts = {
