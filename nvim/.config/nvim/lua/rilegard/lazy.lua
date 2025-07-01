@@ -12,7 +12,10 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("rilegard.plugins", {
+local opts = {
+  defaults = {
+    lazy = true,
+  },
   checker = {
     enabled = true,
     notify = false,
@@ -20,4 +23,6 @@ require("lazy").setup("rilegard.plugins", {
   ui = {
     border = "rounded",
   },
-})
+}
+
+require("lazy").setup("rilegard.plugins", opts)
