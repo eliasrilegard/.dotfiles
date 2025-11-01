@@ -21,8 +21,9 @@ return {
     }
 
     dashboard.section.buttons.val = {
-      dashboard.button("n", "  > Browse files", "<cmd>NvimTreeToggle<cr>"),
-      dashboard.button("f", "󰱼  > Find file", "<cmd>Telescope find_files<cr>"),
+      -- dashboard.button("n", "  > Browse files", "<cmd>NvimTreeToggle<cr>"),
+      dashboard.button("n", "  > New file", "<cmd>enew<cr>"),
+      dashboard.button("f", "󰱽  > Find file", "<cmd>Telescope find_files<cr>"),
       dashboard.button("r", "  > Recent files", "<cmd>Telescope oldfiles<cr>"),
       dashboard.button("s", "󱎸  > Find string", "<cmd>Telescope live_grep<cr>"),
       dashboard.button("l", "󰒲  > Lazy", "<cmd>Lazy<cr>"),
