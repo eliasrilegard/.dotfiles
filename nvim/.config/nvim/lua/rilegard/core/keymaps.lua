@@ -25,7 +25,7 @@ keymap("n", "<C-l>", "<C-w>l", { desc = "Pane right" })
 
 -- Pane management
 keymap("n", "<leader>wv", "<C-w>v", { desc = "Split window vertically" })
-keymap("n", "<leader>wh", "<C-w>s", { desc = "Split window horizontally" })
+keymap("n", "<leader>ws", "<C-w>s", { desc = "Split window horizontally" })
 keymap("n", "<leader>we", "<C-w>=", { desc = "Make windows equal" })
 keymap("n", "<leader>wc", "<cmd>close<cr>", { desc = "Close current split" })
 

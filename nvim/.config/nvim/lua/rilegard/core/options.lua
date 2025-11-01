@@ -24,7 +24,7 @@ set.termguicolors = true
 set.backspace = "indent,eol,start" -- Allow backspace on indent, end of line, or insert mode start position
 
 -- Clipboard
-set.clipboard:append("unnamedplus") -- Use system clipboard as default register
+-- set.clipboard:append("unnamedplus") -- Use system clipboard as default register
 
 -- Split windows
 set.splitright = true -- Split vertical window to the right
