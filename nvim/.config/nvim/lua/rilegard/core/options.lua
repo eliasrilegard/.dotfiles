@@ -25,6 +25,7 @@ set.backspace = "indent,eol,start" -- Allow backspace on indent, end of line, or
 
 -- Clipboard
 -- set.clipboard:append("unnamedplus") -- Use system clipboard as default register
+-- Use "+yy to yank line to clipboard
 
 -- Split windows
 set.splitright = true -- Split vertical window to the right
