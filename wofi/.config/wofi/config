@@ -1,0 +1,9 @@
+allow_images=true
+width=700
+height=500
+prompt=Search:
+term=foot
+hide_scroll=true
+insensitive=true
+
+allow_markup=true
