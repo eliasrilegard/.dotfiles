@@ -25,6 +25,7 @@ return {
       list = {
         selection = {
           preselect = false,
+          auto_insert = true,
         },
       },
 
@@ -59,13 +60,14 @@ return {
       ["<C-j>"] = { "select_next", "fallback" },
       ["<C-k>"] = { "select_prev", "fallback" },
       ["<CR>"] = { "accept", "fallback" },
+      ["<C-h>"] = { "hide", "fallback" },
     },
 
     sources = {
       default = { "lsp", "snippets", "buffer", "path" },
       providers = {
         lsp = {
-          min_keyword_length = 0, -- Number of characters to trigger provider
+          min_keyword_length = 2, -- Number of characters to trigger provider
           score_offset = 0, -- Boost/penalize the score of the items
         },
         path = {
