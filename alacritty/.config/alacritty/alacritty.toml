@@ -4,7 +4,7 @@ resize_increments = true
 
 [font]
 normal = { family = "MesloLGS Nerd Font", style = "Regular" }
-size = 15
+size = 14
 
 [mouse]
 hide_when_typing = true
