@@ -1,35 +1,37 @@
-local set = vim.opt
+local opt = vim.opt
 
-set.number = true
-set.relativenumber = true
+-- General
+opt.number = true         -- Enable line numbers
+opt.relativenumber = true -- Make line numbers relative
+opt.wrap = false          -- Disable text wrapping
+opt.scrolloff = 4         -- Keep N lines above/below cursor
+opt.sidescrolloff = 4     -- Keep N lines left/right of cursor
+opt.showmode = false      -- Hide "-- INSERT --" etc
 
-set.showmode = false
+-- Indentation
+opt.tabstop = 2       -- Number of spaces that a <Tab> represents
+opt.shiftwidth = 2    -- Number of spaces to use for each step of indentation
+opt.softtabstop = -1  -- Number of spaces the cursor moves when pressing tab (negative to fall back to shiftwidth)
 
--- Tabs & Indentation
-set.tabstop = 2 -- 2 spaces for tabs
-set.shiftwidth = 2 -- 2 spaces for indent width
-set.expandtab = true -- Expand tab into spaces
-set.autoindent = true -- Copy indent from current line when starting new one
+opt.expandtab = true  -- Convert tabs into spaces
+opt.autoindent = true -- Copy indentation from current line when creating new one
 
-set.wrap = false
+-- Search
+opt.ignorecase = true -- Ignore case when searching,
+opt.smartcase = true  -- BUT if mixed case present, assume case-sensitive
 
--- Search Settings
-set.ignorecase = true -- Ignore case when searching
-set.smartcase = true -- If mixed case included in search, assume case-sensitive
+-- Colors
+opt.termguicolors = true
 
--- Enable termguicolors. Must use iTerm2 or any other true color terminal
-set.termguicolors = true
+-- Appearance
+opt.winborder = "rounded" -- Rounded borders, everywhere
 
 -- Backspace
-set.backspace = "indent,eol,start" -- Allow backspace on indent, end of line, or insert mode start position
+opt.backspace = "indent,eol,start" -- Allow removing auto-indentation, going across eol boundaries, and past the entry point of insert mode
 
--- Clipboard
--- set.clipboard:append("unnamedplus") -- Use system clipboard as default register
--- Use "+yy to yank line to clipboard
+-- Splits
+opt.splitright = true -- Vertical splits go right
+opt.splitbelow = true -- Horizontal splits go below
 
--- Split windows
-set.splitright = true -- Split vertical window to the right
-set.splitbelow = true -- Split horizontal window to the bottom
-
--- Disable swapfile
-set.swapfile = false
+-- Swap
+opt.swapfile = false

@@ -1,2 +1,3 @@
+vim.loader.enable()
 require("rilegard.core")
-require("rilegard.lazy")
+require("rilegard.plugins")

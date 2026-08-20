@@ -1,9 +1,7 @@
 vim.diagnostic.config({
-  -- Native lsp_lines
-  virtual_lines = true,
-  severity_sort = true,
+  virtual_lines = true, -- Native lsp_lines
 
-  -- Set custom diagnostic signs
+  -- Custom diagnostic signs
   signs = {
     text = {
       [vim.diagnostic.severity.ERROR] = " ",
@@ -12,54 +10,48 @@ vim.diagnostic.config({
       [vim.diagnostic.severity.HINT] = " ",
     },
   },
-
-  -- Rounded border when triggering `open_float`
-  float = { border = "rounded" },
 })
 
--- Toggle virtual lines
-vim.keymap.set(
-  "n",
-  "<leader>l",
-  function()
-    vim.diagnostic.config({
-      virtual_lines = not vim.diagnostic.config().virtual_lines,
-    })
-  end,
-  { desc = "Toggle LSP lines" }
-)
+local keymaps = {
+  { keys = "K", func = vim.lsp.buf.hover, desc = "Hover", has = "hoverProvider" },
+  { keys = "<leader>ca", func = vim.lsp.buf.code_action, desc = "Code actions" },
+  { keys = "<leader>rn", func = vim.lsp.buf.rename, desc = "Rename" },
+  { keys = "<leader>ce", func = vim.diagnostic.open_float, desc = "Line diagnostics" },
+  {
+    keys = "<leader>cf",
+    func = function()
+      vim.lsp.buf.format({ async = true })
+      vim.notify("Code formatted", vim.log.levels.INFO, { title = "LSP Formatting" })
+    end,
+    desc = "Format buffer",
+  },
+  {
+    keys = "<leader>cl",
+    func = function()
+      local new_config = not vim.diagnostic.config().virtual_lines
+      vim.diagnostic.config({ virtual_lines = new_config })
+    end,
+    desc = "Toggle diagnostic lines",
+  },
+}
 
 vim.api.nvim_create_autocmd("LspAttach", {
-  -- group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-  callback = function(ev)
-    -- Buffer local mappings
-    -- See `:h vim.lsp.*` for documentation on any of the below functions
-    local opts = { buffer = ev.buf, silent = true }
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if not client then
+      return
+    end
 
-    opts.desc = "Hover action"
-    vim.keymap.set("n", "K", function()
-      vim.lsp.buf.hover({ border = "rounded" })
-    end, opts)
-
-    opts.desc = "Show LSP definitions"
-    vim.keymap.set("n", "<leader>gd", "<cmd>Telescope lsp_definitions<cr>", opts)
-
-    opts.desc = "Go to declaration"
-    vim.keymap.set("n", "<leader>gD", vim.lsp.buf.declaration, opts)
-
-    opts.desc = "Go to references"
-    vim.keymap.set("n", "<leader>gr", "<cmd>Telescope lsp_references<cr>", opts)
-
-    opts.desc = "Code actions"
-    vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
-
-    opts.desc = "Rename variable"
-    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-
-    opts.desc = "Restart LSP"
-    vim.keymap.set("n", "<leader>rs", "<cmd>LspRestart<cr>", opts)
-
-    opts.desc = "Show errors"
-    vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
+    for _, km in ipairs(keymaps) do
+      -- Only bind if the server supports it
+      if not km.has or client.server_capabilities[km.has] then
+        vim.keymap.set(
+          km.mode or "n",
+          km.keys,
+          km.func,
+          { buffer = args.buf, desc = "LSP: " .. km.desc, silent = true }
+        )
+      end
+    end
   end,
 })
