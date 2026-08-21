@@ -18,6 +18,20 @@ vim.schedule(function()
           auto_insert = true,
         },
       },
+      menu = {
+        max_height = 12,
+        draw = {
+          treesitter = { "lsp" },
+          columns = { { "kind_icon", "label", gap = 1 }, { "kind" } },
+          components = {
+            label = {
+              text = function(ctx)
+                return ctx.label .. " " .. ctx.label_detail
+              end,
+            },
+          },
+        },
+      },
     },
 
     sources = {
