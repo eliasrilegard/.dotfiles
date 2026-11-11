@@ -4,12 +4,13 @@ vim.schedule(function()
 
   require("copilot").setup({
     suggestion = {
-      auto_trigger = true,
+      auto_trigger = false,
       keymap = {
-        accept = false,
-        next = "<C-n>",
-        prev = "<C-p>",
+        accept = "<C-l>",
+        next = "<C-j>",
+        prev = "<C-k>",
         dismiss = "<C-h>",
+        toggle_auto_trigger = "<C-S-h>",
       },
     },
   })
@@ -28,16 +29,16 @@ vim.schedule(function()
     end,
   })
 
-  -- Set <Tab> to accept suggestion if visible, else fallback to normal
-  -- https://github.com/zbirenbaum/copilot.lua/issues/91
-  local suggestion = require("copilot.suggestion")
-  vim.keymap.set("i", "<Tab>", function ()
-    if suggestion.is_visible() then
-      suggestion.accept()
-    else
-      vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, false, true), "n", false)
-    end
-  end)
+  -- -- Set <Tab> to accept suggestion if visible, else fallback to normal
+  -- -- https://github.com/zbirenbaum/copilot.lua/issues/91
+  -- local suggestion = require("copilot.suggestion")
+  -- vim.keymap.set("i", "<Tab>", function ()
+  --   if suggestion.is_visible() then
+  --     suggestion.accept()
+  --   else
+  --     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, false, true), "n", false)
+  --   end
+  -- end)
 
   vim.keymap.set("n", "<leader>ct", "<CMD>Copilot toggle<CR>", { desc = "Toggle Copilot", silent = true })
 end)
